@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation';
 
 interface LoginData {
     email: String;
@@ -11,8 +13,27 @@ interface LoginData {
 
 const SignInForm = () => {
 
+    const router = useRouter()
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit =( data : LoginData) => console.log(data);
+
+    const onSubmit = async (data: LoginData) => {
+        // console.log(data);
+        const signInData = await signIn('credentials', {
+            redirect: false,
+            email: data.email,
+            password: data.password
+        });
+
+
+        if (signInData?.error) {
+            console.log("error happened");
+            console.log(signInData);
+        }
+        else {
+            router.push('/admin')
+        }
+    }
 
     return (
         <div className="bg-[#0e7673] bg-opacity-40 rounded-md p-4">
