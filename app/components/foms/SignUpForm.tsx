@@ -22,7 +22,6 @@ const SignUpForm = () => {
     const router = useRouter();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = async (data: LoginData) => {
-        console.log(data)
 
         if (data.password === data.cpassword) {
 
