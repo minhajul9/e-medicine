@@ -12,7 +12,7 @@ const Navbar = () => {
 
     return (
         <div className='mx-auto'>
-            <div className="navbar text-sm">
+            <div className="navbar border-b-4 border-[#0e7673] text-sm">
                 <div className="navbar-start">
                     <div className='flex item-center justify-center flex-col md:flex-row'>
                         <div>
@@ -43,9 +43,9 @@ const Navbar = () => {
                         <span className="indicator-item badge badge-error text-white text-xs">4</span>
                         <IoCartOutline />
                     </button>
-                    <button className='btn bg-[#0e7673] text-white'>
+                    <Link href='/login' className='btn bg-[#0e7673] text-white'>
                         Login/Sign Up
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
